@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const burgers = require("./data/burgers");
+const { json } = require("express");
 
 dotenv.config({ path: "./.env" });
 
@@ -22,8 +23,10 @@ app.get("/burgers/:id", (req, res) => {
 });
 
 // search burgers
-app.get("/", (req, res) => {
+app.get("/find-burger", (req, res) => {
   const query = req.query.search;
+
+
   const burger =burgers.filter(burger=>{
     if(!query){
         return burgers;
@@ -35,6 +38,7 @@ app.get("/", (req, res) => {
 });
 
 const port = process.env.PORT || 5000;
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
