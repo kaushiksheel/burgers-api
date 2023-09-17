@@ -25,8 +25,6 @@ app.get("/burgers/:id", (req, res) => {
 // search burgers
 app.get("/find-burger", (req, res) => {
   const query = req.query.search;
-
-
   const burger =burgers.filter(burger=>{
     if(!query){
         return burgers;
